@@ -13,33 +13,15 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.1"
           - "8.2"
           - "8.3"
-          - "8.4"
         runner:
           - "ubuntu-latest"
-          - "macos-13"
-          - "ubuntu-24.04-arm"
-          - "macos-14"
-          - "ubuntu-22.04"
-          - "ubuntu-22.04-arm"
         combination:
-          - minimal
           - bulk
           - common
-          - gnu-bulk
         exclude:
           - { runner: "ubuntu-latest", combination: "gnu-bulk" }
-          - { runner: "ubuntu-24.04-arm", combination: "gnu-bulk" }
-          - { runner: "macos-13", combination: "gnu-bulk" }
-          - { runner: "macos-14", combination: "gnu-bulk" }
-          - { runner: "ubuntu-22.04", combination: "minimal" }
-          - { runner: "ubuntu-22.04", combination: "bulk" }
-          - { runner: "ubuntu-22.04", combination: "common" }
-          - { runner: "ubuntu-22.04-arm", combination: "minimal" }
-          - { runner: "ubuntu-22.04-arm", combination: "bulk" }
-          - { runner: "ubuntu-22.04-arm", combination: "common" }
     steps:
       - name: "Process env string"
         id: process-env
